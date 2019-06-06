@@ -1,0 +1,55 @@
+@import "src/variables.scss";
+.login{
+  .login-card{
+    display: flex;
+    flex-direction: column;
+    padding:50px;
+    border-radius:10px;
+    background-color: white;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.16);
+    h1{
+      margin-bottom: 50px;
+      color:$accent-blue;
+      font-size:35px;
+      border-bottom: 2px solid $accent-blue;
+      width: fit-content;
+      align-self: center;
+      padding:0 0 3px 0;
+    }
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    label{
+      color:$accent-pink;
+      font-size:18px;
+      font-weight:500;
+    }
+    input[type='email'],input[type='password']{
+      margin-bottom:20px;
+      padding:10px;
+      border:1px solid white;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.16);
+      outline:none;
+      &:focus{
+        border:1px solid $accent-lightblue;
+      }
+      &::placeholder{
+        color:$placeholder-text;
+        font-size:15px;
+      }
+    }
+    input[type='submit']{
+      font-size:20px;
+      background-color:$accent-pink;
+      border:none;
+      outline:none;
+      color:white;
+      padding:10px 20px;
+      border-radius:3px;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.16);
+      width:fit-content;
+      margin-top:20px;
+    }
+  }
+}

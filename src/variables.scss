@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+//Fonts
+$main-font : 'Montserrat', sans-serif;
+
+//colors
+$background-gray:#FCFCFC;
+$placeholder-text: #878787;
+$accent-pink: #EC6F86;
+$accent-lightpink: #FFB7C4;
+$accent-blue: #64ACFF;
+$accent-lightblue: #C4E0FF;
+$accent-green: #B2F068;
+$accent-lightgreen: #E0FF9A;
+
+.mat-fab.mat-primary,
+.mat-flat-button.mat-primary,
+.mat-mini-fab.mat-primary,
+.mat-raised-button.mat-primary{
+  background-color:$accent-pink;
+  padding:5px 15px;
+  font-family: 'Raleway', sans-serif;
+  font-weight:400;
+  font-size:15px;
+  margin:20px 0;
+}

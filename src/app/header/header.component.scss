@@ -1,0 +1,25 @@
+@import "src/variables.scss";
+
+header {
+  height: 50px;
+  width: 50px;
+  border-radius: 7em;
+  background-color: $accent-pink;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.16);
+  position:absolute;
+  left: 20px;
+  top: 20px;
+  padding-right:7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor:pointer;
+  nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    height: 20px;
+  }
+}
