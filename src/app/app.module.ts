@@ -15,6 +15,9 @@ import { appRoutes } from './routes';
 
 import { HttpClientModule } from '@angular/common/http';
 import {AuthService} from './_services/auth.service';
+import { GameObjectResolver } from './_resolvers/gameObject.resolver';
+import { DeviceDetailComponent } from './detail/devicedetail.component';
+import { DeviceDetailResolver } from './_resolvers/devicedetail.resolver';
 
 @NgModule({
     declarations: [
@@ -23,6 +26,7 @@ import {AuthService} from './_services/auth.service';
         HomeComponent,
         ResulttableComponent,
         LoginComponent,
+        DeviceDetailComponent
     ],
     imports: [
         BrowserModule,
@@ -35,7 +39,9 @@ import {AuthService} from './_services/auth.service';
     ],
     providers: [
         AppComponent,
-        AuthService
+        AuthService,
+        GameObjectResolver,
+        DeviceDetailResolver
     ],
     bootstrap: [
         AppComponent

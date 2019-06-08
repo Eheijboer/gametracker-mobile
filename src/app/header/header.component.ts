@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
     constructor(
         public authService: AuthService,
         private router: Router) {
@@ -17,7 +16,9 @@ export class HeaderComponent implements OnInit {
         this.authService.logout();
         this.router.navigate(['']);
     }
-
+    loggedIn() {
+        return this.authService.isLoggedIn();
+    }
     ngOnInit() {
     }
 }

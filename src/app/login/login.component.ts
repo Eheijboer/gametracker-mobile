@@ -14,7 +14,9 @@ export class LoginComponent {
         public authService: AuthService,
         private router: Router
     ) {}
-
+    loggedIn() {
+        return this.authService.isLoggedIn();
+    }
     login() {
         this.authService.login(this.model).subscribe(
             next => {

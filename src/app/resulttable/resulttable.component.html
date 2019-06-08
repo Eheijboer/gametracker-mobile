@@ -11,19 +11,19 @@
             <th>Name</th>
             <th>Device</th>
             <th>Lowest</th>
-            <th>shop</th>
+            <th>Details</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let value of values | filter:searchText">
+        <tr *ngFor="let gameObject of gameObjects | filter:searchText">
             <td>
-                <img  *ngIf="value.objectType == 1" src="../../assets/images/game.png" width="20">
-                <img  *ngIf="value.objectType == 2" src="../../assets/images/accessory.png" width="20">
+                <img  *ngIf="gameObject.objectType == 1" src="../../assets/images/game.png" width="20">
+                <img  *ngIf="gameObject.objectType == 2" src="../../assets/images/accessory.png" width="20">
             </td>
-            <td>{{value.name}}</td>
-            <td>{{value.device.shortname}}</td>
-            <td>&euro;{{value.gameObjectShop[0].price}}</td>
-            <td>{{value.gameObjectShop[0].price}}</td>
+            <td>{{gameObject.name}}</td>
+            <td>{{gameObject.device.name}}</td>
+            <td>&euro;{{gameObject.price}}</td>
+            <td [routerLink]="['/detailed/', gameObject.lowestObjectId]">More Info</td>
         </tr>
         </tbody>
     </table>

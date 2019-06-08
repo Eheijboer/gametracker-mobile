@@ -1,6 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Gameobject} from '../_models/gameobject';
+import { GameObjectService } from '../_services/gameObject.service';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-resulttable',
@@ -8,43 +12,34 @@ import {Gameobject} from '../_models/gameobject';
     styleUrls: ['./resulttable.component.scss']
 })
 export class ResulttableComponent implements OnInit {
-    values: any;
-    shops: any;
+    @Input() gameObjects: Gameobject[];
+    @Input() lowestObject;
 
-    constructor(private http: HttpClient) {
+    constructor(
+        private route: ActivatedRoute
+        ) {
 
     }
 
     searchText;
 
     ngOnInit() {
-        this.getValues();
-    }
-    getValues() {
-        this.http.get('https://localhost:44328/api/GameObject').subscribe(responce => {
-            console.log(responce);
-            //this.values = responce;
-            this.values = this.filter(responce);
-            console.log(this.shops);
-            console.log(this.values);
+        this.route.data.subscribe(data => {
+            this.gameObjects = data['gameObjects'];
+          });
 
-        }, error => {
-            console.log(error);
-        });
-    }
-
-    filter(fullList) {
-        const returnList = fullList;
-        for (let i = 0; i < returnList.length; i++) {
-            console.log(returnList[i]);
-            let lowestGameShopObject = returnList[i].gameObjectShop[0];
-            for (let j = 1; j < returnList[i].gameObjectShop.length; j++) {
-                if (returnList[i].gameObjectShop[j].price < lowestGameShopObject.price)
-                    lowestGameShopObject = returnList[i].gameObjectShop[j];
+          this.gameObjects.forEach(element => {
+            var lowest = Number.POSITIVE_INFINITY;
+            var tmp;
+            for (var i=element.gameObjectShop.length-1; i>=0; i--) {
+                tmp = element.gameObjectShop[i].price;
+                if (tmp < lowest) {
+                    lowest = tmp; 
+                    this.lowestObject = element.gameObjectShop[i]
+                    this.gameObjects.find(x => x.id == this.lowestObject.gameObjectId).price = this.lowestObject.price;
+                    this.gameObjects.find(x => x.id == this.lowestObject.gameObjectId).lowestObjectId = this.lowestObject.id;
+                }  
             }
-            returnList[i].gameObjectShop = [];
-            returnList[i].gameObjectShop.push(lowestGameShopObject);
-        }
-        return returnList;
+          });
     }
 }
