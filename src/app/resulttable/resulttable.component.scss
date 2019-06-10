@@ -2,21 +2,22 @@
 
 .container {
   overflow: hidden;
-  padding:5px;
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
+
 .search {
   width: 260px;
   top: 180px;
   left: 70px;
   font-size: 0;
   background: #fff;
-  border:1px solid black;
+  border: 1px solid $main-gray;
   border-radius: 40px;
-  margin-bottom:35px;
+  margin-bottom: 35px;
 
   .searchfield {
     float: left;
@@ -24,18 +25,18 @@
     height: 50px;
     border-radius: 40px;
     border: none;
-    color:$placeholder-text;
+    color: $placeholder-text;
     -webkit-appearance: none;
     font-size: 14px;
     font-weight: 500;
     padding: 0 0 0 15px;
     background: #fff;
-    &::placeholder{
-      color:$placeholder-text;
+    &::placeholder {
+      color: $placeholder-text;
     }
-    &:focus, &:hover, &:active{
-      border:none;
-      outline:none;
+    &:focus, &:hover, &:active {
+      border: none;
+      outline: none;
     }
   }
 
@@ -46,47 +47,52 @@
     -webkit-appearance: none;
     border-radius: 40px;
     background: $accent-pink;
-    border:1px solid $accent-pink;
+    border: 2px solid $accent-pink;
     font-size: 20px;
     padding: 0;
     right: -5px;
-    &:focus, &:hover, &:active{
-      border:none;
-      outline:none;
+    &:focus, &:hover, &:active {
+      border: none;
+      outline: none;
     }
     span {
       position: relative;
       top: -1px;
     }
-    .fa-search{
-      color:white;
+    .fa-search {
+      color: white;
     }
   }
 }
+
 table {
   overflow: scroll;
-  td, th {
+
+  th{
+    padding:8px 0;
+    border: none;
+    font-size:14px;
+    text-align: left;
+    color: $main-gray;
+    background:$background-gray;
+  }
+  td{
     border: 1px solid #ddd;
     padding: 8px;
   }
 
-  tr:nth-child(even) {
-    background-color: #fafafa;
-  }
-
-  tr:hover {
-    background-color: #e5e5e5;
-  }
-
-  td:nth-child(1){
+  td:nth-child(1),td:nth-last-child(1) {
     text-align: center;
   }
 
-  th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    color: black;
-    background-color: $accent-lightblue;
+  tr:nth-child(odd){
+    background-color: #F5F5F5;
+  }
+  tr:nth-child(even) {
+    background:$background-gray;
+  }
+
+  tr:hover {
+    background-color: #eeeeee;
   }
 }

@@ -29,27 +29,35 @@
     }
   }
 }
-.filter{
-  padding:20px 10px;
-  width: 100%;
-  display: flex;
-  flex-direction:row;
-  justify-content: space-between;
-  label{
-    font-weight:600;
+table {
+  overflow: scroll;
+
+  th{
+    padding:8px 0;
+    border: none;
+    font-size:14px;
+    text-align: left;
+    color: $main-gray;
+    background:$background-gray;
   }
-  input[type="checkbox"]{
-    margin-right:2px;
+  td{
+    border: 1px solid #ddd;
+    padding: 8px;
   }
-  select{
-    background-color:white;
-    border-radius:3px;
-    padding:2px;
+
+  td:nth-child(1),td:nth-last-child(1) {
+    text-align: center;
   }
-  .type-filter{
-    display: flex;
-    flex-direction:column;
+
+  tr:nth-child(odd){
+    background-color: #F5F5F5;
+  }
+  tr:nth-child(even) {
+    background:$background-gray;
+  }
+
+  tr:hover {
+    background-color: #eeeeee;
   }
 }
-
 

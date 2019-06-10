@@ -29,7 +29,13 @@ export class GameObjectService {
         );
       }
 
-      getGameObjectShop(id): Observable<GameobjectShop> {
+    getListGameObjectShop(id): Observable<GameobjectShop[]> {
+        return this.http.get<GameobjectShop[]>(
+            this.apiUrl + 'api/GameObject/GetListGameObjectShop/' + id
+        );
+    }
+
+    getGameObjectShop(id): Observable<GameobjectShop> {
         return this.http.get<GameobjectShop>(
           this.apiUrl + 'api/GameObject/GetSpecificGameObjectShop/' + id
         );

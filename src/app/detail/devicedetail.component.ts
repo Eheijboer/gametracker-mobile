@@ -1,11 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
 import {Gameobject} from '../_models/gameobject';
-import { GameObjectService } from '../_services/gameObject.service';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { GameobjectShop } from '../_models/gameObjectShop';
+import {GameObjectService} from '../_services/gameObject.service';
+import {ActivatedRoute} from '@angular/router';
+import {GameobjectShop} from '../_models/gameObjectShop';
 
 @Component({
     selector: 'app-devicedetail',
@@ -13,32 +10,35 @@ import { GameobjectShop } from '../_models/gameObjectShop';
     styleUrls: ['./devicedetail.component.scss']
 })
 export class DeviceDetailComponent implements OnInit {
-    @Input() gameObjectShop: GameobjectShop;
-    @Input() gameObject: Gameobject;
-    
-    filtersLoaded: Promise<boolean>;
+    GameObjectShop: GameobjectShop[];
+    GameObject: Gameobject;
 
     constructor(
         private gameObjectService: GameObjectService,
         private route: ActivatedRoute
-        ) {
+    ) {
 
     }
 
     ngOnInit() {
-        this.route.data.subscribe(data => {
-            this.gameObjectShop = data['detail'];
+        this.getGameObjectById();
+        this.getListGameObjectShop();
+    }
 
-            this.getGameObjectById(this.gameObjectShop.gameObjectId)
-            .subscribe(data => {
-              this.gameObject = data;
-              this.filtersLoaded = Promise.resolve(true);
+    getGameObjectById() {
+        return this.gameObjectService.getGameObjectById(+this.route.snapshot.params['id'])
+            .subscribe((GameObject: Gameobject) => {
+                this.GameObject = GameObject;
+                console.log(this.GameObject);
             });
-          });
     }
 
-    getGameObjectById(id) {
-        return this.gameObjectService.getGameObjectById(id);
+    getListGameObjectShop() {
+        return this.gameObjectService.getListGameObjectShop(+this.route.snapshot.params['id'])
+            .subscribe((GameObjectShop: GameobjectShop[]) => {
+            this.GameObjectShop = GameObjectShop;
+            console.log(this.GameObjectShop);
+        });
     }
-    
 }
+

@@ -11,7 +11,7 @@
             <th>Name</th>
             <th>Device</th>
             <th>Lowest</th>
-            <th>Details</th>
+            <th>Info</th>
         </tr>
         </thead>
         <tbody>
@@ -21,9 +21,11 @@
                 <img  *ngIf="gameObject.objectType == 2" src="../../assets/images/accessory.png" width="20">
             </td>
             <td>{{gameObject.name}}</td>
-            <td>{{gameObject.device.name}}</td>
+            <td>{{gameObject.device.shortname}}</td>
             <td>&euro;{{gameObject.price}}</td>
-            <td [routerLink]="['/detailed/', gameObject.lowestObjectId]">More Info</td>
+            <td [routerLink]="['/detailed/', gameObject.id]">
+                <img src="../../assets/images/dots.png">
+            </td>
         </tr>
         </tbody>
     </table>

@@ -1,6 +1,36 @@
-<div class="container" *ngIf="filtersLoaded | async">
-        Shop name: {{gameObjectShop.shop.name}} <br>
-        Price: {{gameObjectShop.price}} <br>
-        Object name: {{gameObject.name}}
- </div>
+<div class="detail">
+    <div class="main-title">
+        <h1>{{GameObject?.name}}</h1>
+    </div>
+    <div class="object-info">
+        <h2 *ngIf="GameObject?.objectType == 1">Type: Game</h2>
+        <h2 *ngIf="GameObject?.objectType == 2">Type: Accessory</h2>
+        <h2 *ngIf="GameObject?.status == 1">Status: To Buy</h2>
+        <h2 *ngIf="GameObject?.status == 2">Status: Bought</h2>
+        <h2 *ngIf="GameObject?.status == 3">Status: Sold</h2>
+    </div>
+    <div class="info">
+    </div>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Shop</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let GameObjectShop of GameObjectShop">
+                <td>{{GameObjectShop.shop.name}}</td>
+                <td>&euro;{{GameObjectShop.price}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
     
