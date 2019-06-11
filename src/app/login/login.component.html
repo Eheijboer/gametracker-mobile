@@ -12,8 +12,8 @@
                         <input type="submit" name="submit" value="Sign in">
                     </form>
                 </div>
-                <h1 *ngIf="loggedIn()" >You are already logged in</h1>
-                <a href="/home">Go to home</a>
+                <h1 *ngIf="loggedIn()">You are already logged in</h1>
+                <a *ngIf="loggedIn()" href="/home">Go to home</a>
             </div>
         </div>
     </div>

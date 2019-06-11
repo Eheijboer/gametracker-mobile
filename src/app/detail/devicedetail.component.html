@@ -8,6 +8,7 @@
         <h2 *ngIf="GameObject?.status == 1">Status: To Buy</h2>
         <h2 *ngIf="GameObject?.status == 2">Status: Bought</h2>
         <h2 *ngIf="GameObject?.status == 3">Status: Sold</h2>
+        <h2>Device: {{GameObject?.device.name}}</h2>
     </div>
     <div class="info">
     </div>
